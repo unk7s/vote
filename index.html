@@ -16,7 +16,7 @@
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
   }
   .question {
@@ -50,9 +50,9 @@
     color: #fff;
     border: none;
     padding: 10px 20px;
-    margin-left: 450px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-left: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
@@ -93,6 +93,8 @@
     </li>
   </ul>
   <button class="submit-button" onclick="submitVote()">Voter</button>
+  <button class="submit-button" onclick="showResults()">Afficher les résultats</button>
+  <div id="vote-results"></div>
 </div>
 <style>
     .option img{
@@ -110,28 +112,44 @@
     }
   }
 </script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCrzAbuCHD4oJjzWMTg_Y9zX3USmnxEsKg",
-    authDomain: "voting-website-1a8dd.firebaseapp.com",
-    projectId: "voting-website-1a8dd",
-    storageBucket: "voting-website-1a8dd.appspot.com",
-    messagingSenderId: "436986442964",
-    appId: "1:436986442964:web:5a2c00811e490413ec7741",
-    measurementId: "G-P938F04TC4"
+<script>
+  const voteResults = {
+    Itachi: 0,
+    Naruto: 0,
+    Tanjiro: 0,
+    Levi: 0
   };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  function submitVote() {
+    const selectedColor = document.querySelector('input[name="color"]:checked');
+    if (selectedColor) {
+      const selectedValue = selectedColor.value;
+      voteResults[selectedValue] += 1;
+      alert('Vous avez voté pour ' + selectedValue);
+    } else {
+      alert('Veuillez sélectionner un personnage avant de voter.');
+    }
+  }
+
+  function updateVoteResults() {
+    const voteResultsContainer = document.getElementById('vote-results');
+    voteResultsContainer.innerHTML = '';
+    for (const option in voteResults) {
+      const resultItem = document.createElement('p');
+      resultItem.textContent = `${option}: ${voteResults[option]} vote${voteResults[option] !== 1 ? 's' : ''}`;
+      voteResultsContainer.appendChild(resultItem);
+    }
+  }
 </script>
+
+<script>
+  // ... (votre code existant)
+
+  function showResults() {
+    updateVoteResults(); // Mettre à jour et afficher les résultats
+  }
+</script>
+
+
 </body>
 </html>
