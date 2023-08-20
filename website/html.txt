@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Vote en ligne</title>
+</head>
+<body>
+    <h1>Votez pour votre option préférée :</h1>
+    <div id="options">
+        <label>
+            <input type="radio" name="vote" value="option1"> Option 1
+        </label>
+        <label>
+            <input type="radio" name="vote" value="option2"> Option 2
+        </label>
+        <label>
+            <input type="radio" name="vote" value="option3"> Option 3
+        </label>
+    </div>
+    <button id="submitBtn">Soumettre</button>
+    <p id="result"></p>
+    <script src="script.js"></script>
+</body>
+</html>

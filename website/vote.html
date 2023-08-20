@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site de Vote en Ligne</title>
+<style>
+  body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  .question {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .options {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .option {
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+  }
+  .option img {
+    max-width: 100%;
+    height: auto;
+  }
+  .submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 450px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1 class="question">Quel est votre personnage préférée ?</h1>
+  <ul class="options">
+    <li class="option">
+      <label for="Itachi">
+        <img src="2f4eabf46f19456ddf2d246ec631084c.jpg" alt="Itachi">
+        <input type="radio" name="color" id="color-red" value="Itachi">
+        Itachi Uchiha
+      </label>
+    </li>
+    <li class="option">
+      <label for="Naruto">
+        <img src="naruto-iphone-nawpic-2.png" alt="Naruto">
+        <input type="radio" name="color" id="color-blue" value="Naruto">
+        Naruto Uzumaki
+      </label>
+    </li>
+    <li class="option">
+        <label for="Tanjiro">
+          <img src="20500634.jpg" alt="Tanjiro">
+          <input type="radio" name="color" id="color-yellow" value="Tanjiro">
+          Kamado Tanjiro
+        </label>
+      </li>
+    <li class="option">
+      <label for="Levi-ackerman">
+        <img src="levi-ackerman-nawpic-11.jpg" alt="Levi-ackerman">
+        <input type="radio" name="color" id="color-green" value="Levi">
+        Levi Ackerman
+      </label>
+    </li>
+  </ul>
+  <button class="submit-button" onclick="submitVote()">Voter</button>
+</div>
+<style>
+    .option img{
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
+</style>
+<script>
+  function submitVote() {
+    const selectedColor = document.querySelector('input[name="color"]:checked');
+    if (selectedColor) {
+      alert('Vous avez voté pour  ' + selectedColor.value);
+    } else {
+      alert('Veuillez sélectionner un personnage avant de voter.');
+    }
+  }
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCrzAbuCHD4oJjzWMTg_Y9zX3USmnxEsKg",
+    authDomain: "voting-website-1a8dd.firebaseapp.com",
+    projectId: "voting-website-1a8dd",
+    storageBucket: "voting-website-1a8dd.appspot.com",
+    messagingSenderId: "436986442964",
+    appId: "1:436986442964:web:5a2c00811e490413ec7741",
+    measurementId: "G-P938F04TC4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
+</html>
